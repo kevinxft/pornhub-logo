@@ -1,0 +1,20 @@
+.porn-hub-input {
+  color: #fff;
+  $height: 70px;
+  display: flex;
+  align-items: center;
+  &-label {
+    display: inline-block;
+    height: $height;
+    line-height: $height;
+  }
+  &-inner {
+    flex: 1;
+    margin-left: 20px;
+    display: inline-block;
+    border-bottom: 1px solid #333;
+    height: $height;
+    line-height: $height;
+    overflow: initial;
+  }
+}
