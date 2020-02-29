@@ -1,0 +1,110 @@
+.color-picker {
+  color: #fff;
+  position: relative;
+  height: 720px;
+  &-map {
+    width: 510px;
+    height: 510px;
+    box-sizing: border-box;
+    text-align: center;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 10;
+    &-item {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0;
+      margin: 0 auto;
+      width: inherit;
+      height: inherit;
+      &.solid {
+        background: rgb(255, 120, 0);
+        border: 2rpx solid transparent;
+      }
+
+      &.white {
+        background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
+        z-index: 10;
+      }
+
+      &.black {
+        background: linear-gradient(to top, #000, rgba(255, 255, 255, 0));
+        z-index: 11;
+        border: 2rpx solid #666;
+      }
+    }
+  }
+  &-area {
+    .movable-area {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 11;
+      width: 570px;
+      height: 570px;
+      &-pointer {
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 2px solid #5e5e5e;
+      }
+    }
+  }
+
+  &-bar {
+    .movable-area {
+      height: 80px;
+      width: 550px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 18;
+      &-pointer {
+        height: 80px;
+        width: 40px;
+        background: #fff;
+        position: relative;
+        border-radius: 3px 3px 0 0;
+        &::before {
+          content: '';
+          position: absolute;
+          top: -19px;
+          left: 0px;
+          border-width: 0 20px 20px;
+          border-style: solid;
+          border-color: transparent transparent #fff;
+        }
+      }
+    }
+    &-color {
+      position: absolute;
+      z-index: 17;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      width: 510px;
+      margin: 0 auto;
+      background: linear-gradient(
+        to right,
+        #ff0000 0%,
+        #ffff00 17%,
+        #00ff00 33%,
+        #00ffff 50%,
+        #0000ff 67%,
+        #ff00ff 83%,
+        #ff0000 100%
+      );
+    }
+  }
+}

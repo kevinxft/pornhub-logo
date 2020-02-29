@@ -1,8 +1,9 @@
 import { View, Text } from '@tarojs/components'
-import { useState } from '@tarojs/taro'
+import { useState, useEffect } from '@tarojs/taro'
 import { PornHubInput } from '../input'
 import { PornHubSlider } from '../slider'
 import { PornHubSwitch } from '../switch'
+import { ColorPicker } from '../color-picker'
 import './index.scss'
 
 export const PornHub = ({
@@ -14,6 +15,16 @@ export const PornHub = ({
   const [prefixText, setPrefixText] = useState('Porn')
   const [suffixText, setSuffixText] = useState('Hub')
   const [fontSize, setFontSize] = useState(60)
+  const [ratio, setRatio] = useState(1)
+  useEffect(() => {
+    wx.getSystemInfo({
+      success(res) {
+        console.log(res)
+        setRatio(res.screenWidth / 750)
+      }
+    })
+  }, [setRatio])
+
   const prefixStyle = {
     color: prefixColor,
   }
@@ -39,7 +50,7 @@ export const PornHub = ({
         </View>
       </View>
       <View className="pornhub-form">
-        <View className="pornhub-form-item">
+        {/* <View className="pornhub-form-item">
           <PornHubInput label="前缀:" defaultValue={prefixText} onChange={setPrefixText}></PornHubInput>
         </View>
         <View className="pornhub-form-item">
@@ -47,9 +58,12 @@ export const PornHub = ({
         </View>
         <View className="pornhub-form-item slider-item">
           <PornHubSlider defaultValue={fontSize} onChange={setFontSize}></PornHubSlider>
-        </View>
-        <View className="pornhub-form-item slider-item">
+        </View> */}
+        <View className="pornhub-form-item">
           <PornHubSwitch></PornHubSwitch>
+        </View>
+        <View className="pornhub-form-item" style={{ padding: 0 }}>
+          <ColorPicker></ColorPicker>
         </View>
       </View>
     </View>
