@@ -20,9 +20,6 @@
   }
   &-right {
     display: inline-block;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #000;
   }
 
   &-form {
@@ -33,6 +30,10 @@
       margin-top: 30px;
       &.slider-item {
         margin-top: 70px;
+      }
+
+      .save-button {
+        background: #FF9900;
       }
     }
   }

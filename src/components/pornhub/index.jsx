@@ -1,29 +1,20 @@
-import { View, Text } from '@tarojs/components'
-import { useState, useEffect } from '@tarojs/taro'
+import { View, Text, Button } from '@tarojs/components'
+import { useState } from '@tarojs/taro'
 import { PornHubInput } from '../input'
 import { PornHubSlider } from '../slider'
 import { PornHubSwitch } from '../switch'
-import { ColorPicker } from '../color-picker'
+import { ColorBlock } from '../color-block'
 import './index.scss'
 
-export const PornHub = ({
-  prefixColor = '#FFF',
-  suffixColor = '#000',
-  suffixBackgroundColor = '#FF9900',
-  reverse = false,
-}) => {
+export const PornHub = () => {
   const [prefixText, setPrefixText] = useState('Porn')
   const [suffixText, setSuffixText] = useState('Hub')
   const [fontSize, setFontSize] = useState(60)
-  const [ratio, setRatio] = useState(1)
-  useEffect(() => {
-    wx.getSystemInfo({
-      success(res) {
-        console.log(res)
-        setRatio(res.screenWidth / 750)
-      }
-    })
-  }, [setRatio])
+  const [reverse, setReverse] = useState(false)
+
+  const [prefixColor, setPrefixColor] = useState('#FFFFFF')
+  const [suffixColor, setSuffixColor] = useState('#000000')
+  const [suffixBackgroundColor, setSuffixBackgroundColor] = useState('#FF9900')
 
   const prefixStyle = {
     color: prefixColor,
@@ -32,6 +23,8 @@ export const PornHub = ({
   const suffixStyle = {
     color: suffixColor,
     backgroundColor: suffixBackgroundColor,
+    padding: '10rpx 20rpx',
+    borderRadius: '10rpx',
   }
 
   const leftStyle = reverse ? suffixStyle : prefixStyle
@@ -50,7 +43,7 @@ export const PornHub = ({
         </View>
       </View>
       <View className="pornhub-form">
-        {/* <View className="pornhub-form-item">
+        <View className="pornhub-form-item">
           <PornHubInput label="前缀:" defaultValue={prefixText} onChange={setPrefixText}></PornHubInput>
         </View>
         <View className="pornhub-form-item">
@@ -58,12 +51,17 @@ export const PornHub = ({
         </View>
         <View className="pornhub-form-item slider-item">
           <PornHubSlider defaultValue={fontSize} onChange={setFontSize}></PornHubSlider>
-        </View> */}
-        <View className="pornhub-form-item">
-          <PornHubSwitch></PornHubSwitch>
         </View>
-        <View className="pornhub-form-item" style={{ padding: 0 }}>
-          <ColorPicker></ColorPicker>
+        <View className="pornhub-form-item" style={{ textAlign: 'center', marginTop: '50rpx', padding: 0 }}>
+          <ColorBlock onChange={setPrefixColor} label="前綴颜色" defaultHex="#FFFFFF"></ColorBlock>
+          <ColorBlock onChange={setSuffixColor} label="后綴颜色" defaultHex="#000000"></ColorBlock>
+          <ColorBlock onChange={setSuffixBackgroundColor} label="背景颜色" defaultHex="#FF9900"></ColorBlock>
+        </View>
+        <View className="pornhub-form-item" style={{ marginTop: '50rpx' }}>
+          <PornHubSwitch onSwitchChange={setReverse}></PornHubSwitch>
+        </View>
+        <View className="pornhub-form-item" style={{ marginTop: '80rpx' }}>
+          <Button className="save-button">保存图片</Button>
         </View>
       </View>
     </View>

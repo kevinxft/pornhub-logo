@@ -5,9 +5,9 @@ export const PornHubInput = ({ label = '', defaultValue = 'Porn', onChange }) =>
   const onInput = evt => onChange(evt.detail.value)
 
   return (
-    <View className="porn-hub-input">
-      <Text className="pron-hub-input-label">{label}</Text>
-      <Input className="porn-hub-input-inner" placeholder="输入字符" onInput={onInput} value={defaultValue}></Input>
+    <View className="pornhub-input">
+      <Text className="pornhub-input-label">{label}</Text>
+      <Input className="pornhub-input-inner" placeholder="输入字符" onInput={onInput} value={defaultValue}></Input>
     </View>
   )
 }
