@@ -4,6 +4,8 @@ import { PornHubInput } from '../input'
 import { PornHubSlider } from '../slider'
 import { PornHubSwitch } from '../switch'
 import { ColorBlock } from '../color-block'
+import { Drawer } from '../drawer'
+import { DrawerLogo } from '../drawer-logo'
 import './index.scss'
 
 export const PornHub = () => {
@@ -30,6 +32,15 @@ export const PornHub = () => {
   const leftStyle = reverse ? suffixStyle : prefixStyle
   const rightStyle = !reverse ? suffixStyle : prefixStyle
 
+  const drawerConfig = {
+    fontSize,
+    prefixText,
+    prefixColor,
+    suffixText,
+    suffixColor,
+    suffixBackgroundColor,
+    reverse,
+  }
   return (
     <View className="pornhub-container">
       <View className="pornhub">
@@ -43,12 +54,12 @@ export const PornHub = () => {
         </View>
       </View>
       <View className="pornhub-form">
-        <View className="pornhub-form-item">
+        {/* <View className="pornhub-form-item">
           <PornHubInput label="前缀:" defaultValue={prefixText} onChange={setPrefixText}></PornHubInput>
         </View>
         <View className="pornhub-form-item">
           <PornHubInput label="后缀:" defaultValue={suffixText} onChange={setSuffixText}></PornHubInput>
-        </View>
+        </View> */}
         <View className="pornhub-form-item slider-item">
           <PornHubSlider defaultValue={fontSize} onChange={setFontSize}></PornHubSlider>
         </View>
@@ -61,7 +72,7 @@ export const PornHub = () => {
           <PornHubSwitch onSwitchChange={setReverse}></PornHubSwitch>
         </View>
         <View className="pornhub-form-item" style={{ marginTop: '80rpx' }}>
-          <Button className="save-button">保存图片</Button>
+          <Drawer drawerConfig={drawerConfig}></Drawer>
         </View>
       </View>
     </View>
