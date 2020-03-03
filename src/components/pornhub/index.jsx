@@ -13,6 +13,7 @@ export const PornHub = () => {
   const [suffixText, setSuffixText] = useState('Hub')
   const [fontSize, setFontSize] = useState(60)
   const [reverse, setReverse] = useState(false)
+  const [transparency, setTransparency] = useState(false)
 
   const [prefixColor, setPrefixColor] = useState('#FFFFFF')
   const [suffixColor, setSuffixColor] = useState('#000000')
@@ -40,6 +41,7 @@ export const PornHub = () => {
     suffixColor,
     suffixBackgroundColor,
     reverse,
+    transparency,
   }
   return (
     <View className="pornhub-container">
@@ -53,23 +55,30 @@ export const PornHub = () => {
           </View>
         </View>
       </View>
-      <View className="pornhub-form">
-        {/* <View className="pornhub-form-item">
-          <PornHubInput label="前缀:" defaultValue={prefixText} onChange={setPrefixText}></PornHubInput>
+      {prefixText.length + suffixText.length >= 8 && fontSize > 110 && (
+        <View style={{ marginTop: '20rpx', textAlign: 'center', color: '#909399' }}>
+          假使预览图出现换行，生成的图片也不会换行。
         </View>
-        <View className="pornhub-form-item">
+      )}
+      <View className="pornhub-form">
+        <View
+          className="pornhub-form-item"
+          style={{ padding: '0 50rpx', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+        >
+          <PornHubInput label="前缀:" defaultValue={prefixText} onChange={setPrefixText}></PornHubInput>
           <PornHubInput label="后缀:" defaultValue={suffixText} onChange={setSuffixText}></PornHubInput>
-        </View> */}
+        </View>
         <View className="pornhub-form-item slider-item">
           <PornHubSlider defaultValue={fontSize} onChange={setFontSize}></PornHubSlider>
         </View>
-        <View className="pornhub-form-item" style={{ textAlign: 'center', marginTop: '50rpx', padding: 0 }}>
+        <View className="pornhub-form-item" style={{ textAlign: 'center', padding: 0 }}>
           <ColorBlock onChange={setPrefixColor} label="前綴颜色" defaultHex="#FFFFFF"></ColorBlock>
           <ColorBlock onChange={setSuffixColor} label="后綴颜色" defaultHex="#000000"></ColorBlock>
-          <ColorBlock onChange={setSuffixBackgroundColor} label="背景颜色" defaultHex="#FF9900"></ColorBlock>
+          <ColorBlock onChange={setSuffixBackgroundColor} label="后缀背景" defaultHex="#FF9900"></ColorBlock>
         </View>
-        <View className="pornhub-form-item" style={{ marginTop: '50rpx' }}>
+        <View className="pornhub-form-item" style={{ textAlign: 'center', padding: 0 }}>
           <PornHubSwitch onSwitchChange={setReverse}></PornHubSwitch>
+          <PornHubSwitch label="透明背景" onSwitchChange={setTransparency}></PornHubSwitch>
         </View>
         <View className="pornhub-form-item" style={{ marginTop: '80rpx' }}>
           <Drawer drawerConfig={drawerConfig}></Drawer>

@@ -22,6 +22,10 @@ export const PornHubSlider = ({
   return (
     <View className="pornhub-slider">
       <View>
+        <View className="pornhub-slider-tips">
+          当前字体大小为：
+          <Text className="pornhub-slider-value">{value}px</Text>
+        </View>
         <Slider
           min={min}
           max={max}
@@ -32,10 +36,6 @@ export const PornHubSlider = ({
           block-size={blockSize}
           block-color={blockColor}
         ></Slider>
-        <View className="pornhub-slider-tips">
-          当前字体大小为：
-          <Text className="pornhub-slider-value">{value}px</Text>
-        </View>
       </View>
     </View>
   )

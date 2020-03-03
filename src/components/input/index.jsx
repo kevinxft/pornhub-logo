@@ -7,7 +7,13 @@ export const PornHubInput = ({ label = '', defaultValue = 'Porn', onChange }) =>
   return (
     <View className="pornhub-input">
       <Text className="pornhub-input-label">{label}</Text>
-      <Input className="pornhub-input-inner" placeholder="输入字符" onInput={onInput} value={defaultValue}></Input>
+      <Input
+        className="pornhub-input-inner"
+        maxLength={5}
+        placeholder="输入字符"
+        onInput={onInput}
+        value={defaultValue}
+      ></Input>
     </View>
   )
 }
