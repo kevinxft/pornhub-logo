@@ -24,9 +24,14 @@
 
   &-form {
     margin-top: 50px;
-    &-item {
+    &-item{
       padding: 0 100px 0;
       margin-bottom: 80px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
       &.slider-item {
         margin-top: 70px;
       }
